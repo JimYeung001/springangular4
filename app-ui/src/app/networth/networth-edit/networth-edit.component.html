@@ -1,0 +1,197 @@
+<div class="row">
+  <div class="col">
+    <h4>Tracking your Networth</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="row text-right mt-2 mb-3">
+      <div class="col-12 col-md-11">
+        <div class="border-bottom-1">
+          <h6>Select Currency:
+            <b class="text-danger">CAD</b>
+          </h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-2 text-success">
+      <div class="col-6">
+        <h5>Net Worth</h5>
+      </div>
+      <div class="col-6 col-md-5 text-right  pl-0">
+        <h5>{{yourNetworth | currency : $ : 2}}</h5>
+      </div>
+    </div>
+    <div class="row text-right mb-3">
+      <div class="col-12 col-md-11 ">
+        <div class="border-bottom-2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<form novalidate [formGroup]="networthFormGroup">
+  <div class="row">
+    <!-- first Column -->
+    <div class="col-12 col-md-6">
+
+
+
+      <div class="row mt-2 mb-3">
+        <div class="col-12 col-md-10 ">
+          <div class="border-bottom-1">
+            <h5>Assets</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- start: Cash and Investments -->
+      <div class="row mt-2 mb-3">
+        <div class="col-12 col-md-10 ">
+          <div class="border-bottom-1">
+            <i>
+              <b>Cash and Investments</b>
+            </i>
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let key of cashAndInvestmentsArray">
+        <div class="form-group row d-flex align-items-center">
+          <label class="col-6 col-form-label">{{key | nameFilter }}: </label>
+          <div class="col-6 col-md-4 pl-0">
+            <input type="text" class="form-control text-right text-danger" formControlName={{key}} (blur)="onInputChange($event)" numberOnly="true">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-10 text-right">
+            <show-errors [control]="networthFormGroup.controls[key]"></show-errors>
+          </div>
+        </div>
+      </div>
+      <!-- End: Cash and Investments -->
+
+      <!-- Start: Long Term Assets -->
+      <div class="row mt-2 mb-3">
+        <div class="col-12 col-md-10 ">
+          <div class="border-bottom-1">
+            <i>
+              <b>Long Term Assets</b>
+            </i>
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let key of longTermAssetsArray">
+        <div class="form-group row d-flex align-items-center">
+          <label class="col-6 col-form-label">{{key | nameFilter }}: </label>
+          <div class="col-6 col-md-4 pl-0">
+            <input type="text" class="form-control text-right text-danger" formControlName={{key}} (blur)="onInputChange($event)" numberOnly="true">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-10 text-right">
+            <show-errors [control]="networthFormGroup.controls[key]"></show-errors>
+          </div>
+        </div>
+      </div>
+      <!-- End: Long Term Assets -->
+
+      <div class="row mt-2 text-success">
+        <div class="col-6">
+          <h5>Total Assets</h5>
+        </div>
+        <div class="col-6 col-md-4 text-right">
+          <h5>{{totalAssets | currency : $ : 2}}</h5>
+        </div>
+      </div>
+      <div class="row text-right mb-3">
+        <div class="col-12 col-md-10 ">
+          <div class="border-bottom-2"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- second Column -->
+    <div class="col-12 col-md-6">
+
+      <div class="row mt-2 mb-3">
+        <div class="col-12 col-md-10 ">
+          <div class="border-bottom-1">
+            <h5>Liabilities</h5>
+          </div>
+        </div>
+      </div>
+      <!-- start: Short Term Liabilties -->
+      <div class="row mt-2 mb-3">
+        <div class="col-12 col-md-10 ">
+          <div class="border-bottom-1">
+            <i>
+              <b>Short Term Liabilties</b>
+            </i>
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let key of shortTermLiabArray">
+        <div class="form-group row d-flex align-items-center">
+          <label class="col-6 col-form-label">{{key | nameFilter }}: </label>
+          <div class="col-6 col-md-4 pl-0">
+            <input type="text" class="form-control text-right text-danger" formControlName={{key}} (blur)="onInputChange($event)" numberOnly="true">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-10 text-right">
+            <show-errors [control]="networthFormGroup.controls[key]"></show-errors>
+          </div>
+        </div>
+      </div>
+
+      <!-- End: Short Term Liabilties -->
+
+      <!-- start: Long Term Debt -->
+      <div class="row mt-2 mb-3">
+        <div class="col-12 col-md-10 ">
+          <div class="border-bottom-1">
+            <i>
+              <b>Long Term Debt</b>
+            </i>
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let key of longTermDebtArray">
+        <div class="form-group row d-flex align-items-center">
+          <label class="col-6 col-form-label">{{key | nameFilter }}: </label>
+          <div class="col-6 col-md-4 pl-0">
+            <input type="text" class="form-control text-right text-danger" formControlName={{key}} (blur)="onInputChange($event)" numberOnly="true">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-10 text-right">
+            <show-errors [control]="networthFormGroup.controls[key]"></show-errors>
+          </div>
+        </div>
+      </div>
+      <!-- End: Long Term Debt -->
+
+      <div class="row mt-2 text-success">
+        <div class="col-6">
+          <h5>Total Liabilties</h5>
+        </div>
+        <div class="col-6 col-md-4 text-right pl-0">
+          <h5>{{totalLiabilities | currency : $ : 2}}</h5>
+        </div>
+      </div>
+      <div class="row text-right mb-3">
+        <div class="col-12 col-md-10 ">
+          <div class="border-bottom-2"></div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</form>
+

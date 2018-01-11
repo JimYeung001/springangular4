@@ -1,0 +1,29 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="row mb-3 mt-5">
+  <div class="col">
+    <h3>
+      <u>Welcome to {{title}}!</u>
+    </h3>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col">
+    <img width="360" class="img-thumbnail" src="{{heroImageUrl}}" alt="A generic square placeholder image with rounded corners in a figure.">
+  </div>
+</div>
+
+<div class="row mb-5">
+  <div class="col">
+    <nav>
+      <a class="btn btn-info mr-3 px-3" routerLink="/networth" routerLinkActive="active">Networth</a>
+      <a class="btn btn-success px-3" routerLink="/networth/edit/1" routerLinkActive="active">Calculator</a>
+    </nav>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col">
+    <router-outlet></router-outlet>
+  </div>
+</div>

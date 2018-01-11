@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col col-md-10 col-lg-8">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>NET WORTH</th>
+          <th>TOTAL ASSETS</th>
+          <th>TOTAL LIABILITIES</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let nw of networths">
+          <th scope="row">{{nw.id}}</th>
+          <td>{{nw.netWorth | currency : $ : 2}}</td>
+          <td>{{nw.totalAssets | currency : $ : 2}}</td>
+          <td>{{nw.totalLiabilities | currency : $ : 2}}</td>
+          <td>
+            <button type="button" class="btn btn-secondary btn-sm" (click)="editNetworth(nw)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
